@@ -1,1 +1,26 @@
-<%= react_component('NewBookmarkForm') %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <form action="">
+      <div class="form-group">
+        <div class="input-group">
+          <input name="url" type="text" class="form-control" placeholder="URL..."/>
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="submit">Add</button>
+            </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-default btn-xs">Advanced settings</button>
+      </div>
+      <div class="form-group">
+        <input name="title" class="form-control" type="text" placeholder="Title"/>
+      </div>
+      <div class="form-group">
+        <input name="tags" class="form-control" type="text" placeholder="Tags, comma separated"/>
+      </div>
+      <div class="form-group">
+        <textarea name="description" class="form-control textarea-lg" type="text" placeholder="Description"></textarea>
+      </div>
+    </form>
+  </div>
+</div>
