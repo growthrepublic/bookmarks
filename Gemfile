@@ -27,6 +27,7 @@ gem 'trailblazer'
 gem 'cells'
 gem 'acts-as-taggable-on'
 gem 'ransack'
+gem 'simple_form'
 
 gem 'compass-rails', github: 'Compass/compass-rails'
 gem 'bootstrap-sass', '3.3.4.1'
