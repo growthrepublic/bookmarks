@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
+gem 'responders'
 gem 'pg'
 gem 'puma'
 
@@ -18,9 +19,11 @@ group :development, :test do
   gem 'spring'
   gem 'quiet_assets'
   gem 'minitest-spec-rails'
+  gem 'annotate'
 end
 
 gem 'trailblazer'
+gem 'cells'
 gem 'acts-as-taggable-on'
 gem 'ransack'
 
