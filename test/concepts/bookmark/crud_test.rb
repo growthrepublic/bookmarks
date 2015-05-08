@@ -25,4 +25,27 @@ class BookmarkCrudTest < MiniTest::Spec
       op.contract.errors.to_s.must_equal '{:url=>["can\'t be blank"]}'
     end
   end
+
+  describe 'Update' do
+    let (:bookmark) {
+      Bookmark::Create[bookmark: {
+          url: 'http://www.google.pl',
+          title: 'Google Search Engine'
+      }].model
+    }
+
+    it 'persists valid' do
+      Bookmark::Update[
+          id: bookmark.id,
+          bookmark: {
+              url: 'http://www.bing.com',
+              title: 'Bing'
+          }
+      ]
+
+      bookmark.reload
+      bookmark.url.must_equal 'http://www.bing.com'
+      bookmark.title.must_equal 'Bing'
+    end
+  end
 end
