@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   respond_to :html
 
   def new
-    present Bookmark::Create
+    form Bookmark::Create
   end
 
   def create
