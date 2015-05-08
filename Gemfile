@@ -18,5 +18,9 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'trailblazer'
+gem 'acts-as-taggable-on'
+gem 'ransack'
+
 gem 'compass-rails'
 gem 'bootstrap-sass'
