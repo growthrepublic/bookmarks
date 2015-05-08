@@ -1,0 +1,10 @@
+<h1>
+  Create New Bookmark
+</h1>
+<%= simple_form_for @form do |f| %>
+    <%= f.input :url %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+
+    <%= f.submit %>
+<% end %>
