@@ -10,9 +10,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'turbolinks'
 
-
 gem 'jquery-rails'
-gem 'jbuilder', '~> 2.0'
 
 group :development, :test do
   gem 'byebug'
@@ -23,13 +21,17 @@ group :development, :test do
   gem 'annotate'
 end
 
-gem 'trailblazer'
-gem 'cells'
 gem 'acts-as-taggable-on'
 gem 'ransack'
-gem 'simple_form'
+
+gem 'screencap'
+gem 'sidekiq'
+gem 'metainspector'
+gem 'memoist'
+gem 'alchemy-api-rb', :require => 'alchemy_api'
 
 gem 'compass-rails', github: 'Compass/compass-rails'
 gem 'bootstrap-sass', '3.3.4.1'
 gem 'react-rails', '~> 1.0'
 gem 'sprockets-coffee-react'
+gem 'pry-rails'

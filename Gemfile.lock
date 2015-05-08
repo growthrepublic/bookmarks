@@ -47,6 +47,10 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (3.5.0)
       activerecord (>= 3.2, < 5)
+    addressable (2.3.8)
+    alchemy-api-rb (0.5.2)
+      excon (~> 0.28)
+      faraday (~> 0.9.0)
     annotate (2.6.8)
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
@@ -62,11 +66,10 @@ GEM
     builder (3.2.2)
     byebug (4.0.5)
       columnize (= 0.9.0)
-    cells (3.11.3)
-      actionpack (>= 3.0)
-      railties (>= 3.0)
-      uber (~> 0.0.8)
+    celluloid (0.16.0)
+      timers (~> 4.0.0)
     chunky_png (1.3.4)
+    coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -91,19 +94,28 @@ GEM
       sass (>= 3.2, < 3.5)
     connection_pool (2.2.0)
     debug_inspector (0.0.2)
-    disposable (0.0.9)
-      representable (~> 2.0)
-      uber
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
+    excon (0.45.3)
     execjs (2.5.2)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
+    faraday-cookie_jar (0.0.6)
+      faraday (>= 0.7.4)
+      http-cookie (~> 1.0.0)
+    faraday_middleware (0.9.1)
+      faraday (>= 0.7.4, < 0.10)
+    fastimage (1.6.8)
+      addressable (~> 2.3, >= 2.3.5)
     ffi (1.9.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     hike (1.2.3)
+    hitimes (1.2.2)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
-    jbuilder (2.2.13)
-      activesupport (>= 3.0.0, < 5)
-      multi_json (~> 1.2)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -113,6 +125,15 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    memoist (0.12.0)
+    metainspector (4.4.2)
+      addressable (~> 2.3.5)
+      faraday (~> 0.9.0)
+      faraday-cookie_jar (~> 0.0.6)
+      faraday_middleware (~> 0.9.1)
+      fastimage
+      nokogiri (~> 1.6)
+    method_source (0.8.2)
     mime-types (2.5)
     mini_portile (0.6.2)
     minitest (5.6.1)
@@ -120,11 +141,19 @@ GEM
       minitest (~> 5.0)
       rails (~> 4.1)
     multi_json (1.11.0)
+    multipart-post (2.0.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.18.1)
+    phantomjs (1.9.8.0)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
     quiet_assets (1.1.0)
@@ -173,15 +202,9 @@ GEM
       rails (>= 3.1)
       react-source (~> 0.13)
     react-source (0.13.2)
-    reform (1.2.6)
-      activemodel
-      disposable (~> 0.0.5)
-      representable (~> 2.1.0)
-      uber (~> 0.0.11)
-    representable (2.1.7)
-      multi_json
-      nokogiri
-      uber (~> 0.0.7)
+    redis (3.2.1)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     sass (3.4.13)
@@ -191,9 +214,15 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    simple_form (3.1.0)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
+    screencap (0.1.2)
+      phantomjs
+    sidekiq (3.3.4)
+      celluloid (>= 0.16.0)
+      connection_pool (>= 2.1.1)
+      json
+      redis (>= 3.0.6)
+      redis-namespace (>= 1.3.1)
+    slop (3.6.0)
     spring (1.3.5)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -212,19 +241,18 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
-    trailblazer (0.2.2)
-      actionpack (>= 3.0.0)
-      reform (~> 1.2.0)
-      representable (>= 2.1.1, < 2.2.0)
-      uber (>= 0.0.10)
+    timers (4.0.1)
+      hitimes
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uber (0.0.13)
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     web-console (2.1.2)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -236,16 +264,18 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
+  alchemy-api-rb
   annotate
   bootstrap-sass (= 3.3.4.1)
   byebug
-  cells
   coffee-rails (~> 4.1.0)
   compass-rails!
-  jbuilder (~> 2.0)
   jquery-rails
+  memoist
+  metainspector
   minitest-spec-rails
   pg
+  pry-rails
   puma
   quiet_assets
   rails (= 4.2.0)
@@ -253,10 +283,10 @@ DEPENDENCIES
   react-rails (~> 1.0)
   responders
   sass-rails (~> 5.0)
-  simple_form
+  screencap
+  sidekiq
   spring
   sprockets-coffee-react
-  trailblazer
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
