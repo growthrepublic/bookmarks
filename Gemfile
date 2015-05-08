@@ -29,6 +29,12 @@ gem 'acts-as-taggable-on'
 gem 'ransack'
 gem 'simple_form'
 
+gem 'screencap'
+gem 'sidekiq'
+gem 'metainspector'
+gem 'memoist'
+gem 'alchemy-api-rb', :require => 'alchemy_api'
+
 gem 'compass-rails', github: 'Compass/compass-rails'
 gem 'bootstrap-sass', '3.3.4.1'
 gem 'react-rails'
