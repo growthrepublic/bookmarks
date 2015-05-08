@@ -11,7 +11,7 @@ NewBookmarkForm = React.createClass
     }
 
   render: ->
-    `<div className="panel panel-default">
+    <div className="panel panel-default">
       <div className="panel-body">
         <form action="">
           <div className="form-group">
@@ -25,13 +25,13 @@ NewBookmarkForm = React.createClass
           <div className="form-group">
             <button className="btn btn-default btn-xs" onClick={this.toggleAdvancedOptions}>Advanced settings</button>
           </div>
-          { this.state.advanced_options ? this.advancedOptions() : '' }
+          { this.advancedOptions() if this.state.advanced_options }
         </form>
       </div>
-    </div>`
+    </div>
 
   advancedOptions: ->
-    `<div className="advanced-options">
+    <div className="advanced-options">
       <div className="form-group">
         <input name="title" className="form-control" type="text" placeholder="Title"/>
       </div>
@@ -41,7 +41,7 @@ NewBookmarkForm = React.createClass
       <div className="form-group">
         <textarea name="description" className="form-control textarea-lg" type="text" placeholder="Description"></textarea>
       </div>
-    </div>`
+    </div>
 
   urlChanged: (event) ->
     @setState(url: event.target.value)
