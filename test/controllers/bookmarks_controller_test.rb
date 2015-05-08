@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe BookmarksController do
+describe Api::BookmarksController do
   describe '#new' do
     it do
       get :new
@@ -11,7 +11,7 @@ describe BookmarksController do
   describe '#create' do
     it do # valid
       post :create, {bookmark: {url: 'http://www.google.pl'}}
-      assert_redirected_to bookmark_path(Bookmark.last)
+      assert_redirected_to api_bookmark_path(Bookmark.last)
     end
 
     it do # invalid

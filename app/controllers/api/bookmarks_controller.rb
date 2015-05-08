@@ -1,4 +1,4 @@
-class BookmarksController < ApplicationController
+class Api::BookmarksController < ApplicationController
   respond_to :html
 
   def new
@@ -7,7 +7,7 @@ class BookmarksController < ApplicationController
 
   def create
     run Bookmark::Create do |op|
-      return redirect_to op.model
+      return redirect_to [:api, op.model]
     end
 
     render action: :new
@@ -21,7 +21,7 @@ class BookmarksController < ApplicationController
 
   def update
     run Bookmark::Update do |op|
-      return redirect_to op.model
+      return redirect_to [:api, op.model]
     end
 
     render action: :new
