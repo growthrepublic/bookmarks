@@ -18,7 +18,7 @@ class PageScrapper
   memoize :description
 
   def tags
-    # TODO: MORE COMPLEXITY!
+    # TODO: MORE COMPLEXITY! \o/
     tags = []
     tags += scrapper.meta['keywords'].to_s.split(',').map { |k| k.strip.parameterize }
     tags += AlchemyAPI.search(:keyword_extraction, url: @url).reduce([]) do |keywords, keyword|
