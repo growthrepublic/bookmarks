@@ -10,7 +10,7 @@ class Api::BookmarksController < ApplicationController
   end
 
   def create
-    bookmark = Bookmark.create!(params.slice(:url, :title, :description))
+    bookmark = Bookmark.create!(bookmark_params)
     render json: bookmark
 
   rescue ActiveRecord::RecordInvalid
@@ -19,7 +19,7 @@ class Api::BookmarksController < ApplicationController
 
   def update
     bookmark = Bookmark.find(params[:id])
-    bookmark.update!(params.slice(:url, :title, :description))
+    bookmark.update!(bookmark_params)
     render json: bookmark
 
   rescue ActiveRecord::RecordInvalid
@@ -30,5 +30,10 @@ class Api::BookmarksController < ApplicationController
     bookmark = Bookmark.find(params[:id])
     bookmark.destroy!
     render json: bookmark
+  end
+
+  protected
+  def bookmark_params
+    params.permit(:url, :title, :description)
   end
 end
