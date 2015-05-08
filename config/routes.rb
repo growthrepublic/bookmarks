@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :bookmarks do
       collection do
         get 'metadata'
+        get 'search'
       end
     end
   end
