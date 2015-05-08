@@ -14,16 +14,16 @@ NewBookmarkForm = React.createClass
         <form action="">
           <div className="form-group">
             <div className="input-group">
-              <input name="url" type="text" className="form-control" placeholder="URL..." value={this.state.url} onChange={this.urlChanged}/>
+              <input name="url" type="text" className="form-control" placeholder="URL..." value={@state.url} onBlur={@urlChanged}/>
               <span className="input-group-btn">
                 <button className="btn btn-primary" type="submit">Add</button>
               </span>
             </div>
           </div>
           <div className="form-group">
-            <button className="btn btn-default btn-xs" onClick={this.toggleAdvancedOptions}>Advanced settings</button>
+            <button className="btn btn-default btn-xs" onClick={@toggleAdvancedOptions}>Advanced settings</button>
           </div>
-          { this.advancedOptions() if this.state.advanced_options }
+          { @advancedOptions() if @state.advanced_options }
         </form>
       </div>
     </div>
