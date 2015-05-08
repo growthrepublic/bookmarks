@@ -18,3 +18,5 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'compass-rails'
+gem 'bootstrap-sass'
