@@ -28,55 +28,6 @@ fixtures = [
     thumbnail: '/mockup/httponetpl.png'
   }
 ]
-fixtures.map! { |f| OpenStruct.new(f) }
 %>
 
-<div class="panel panel-default">
-  <div class="panel-body">
-    <form action="">
-      <div class="form-group">
-        <div class="input-group">
-          <input name="url" type="text" class="form-control" placeholder="A phrase, fragment of description, tag or URL..."/>
-            <span class="input-group-btn">
-              <button class="btn btn-primary" type="submit">Search</button>
-            </span>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-<hr>
-
-<% fixtures.each do |bookmark| %>
-  <div class="panel panel-default panel-bookmark panel-bookmark-collapsed" id="bookmark-<%= bookmark.id %>">
-  <a class="collapse-trigger">
-    <i class="glyphicon glyphicon-chevron-down"></i>
-  </a>
-
-  <div class="thumbnail pull-right">
-    <img src="<%= bookmark.thumbnail %>" alt="" width="300" height="225"/>
-  </div>
-
-  <div class="content">
-    <h1>
-      <a href="<%= bookmark.url %>"><%= bookmark.title %>
-        <i><%= bookmark.url %></i></a>
-    </h1>
-    <div class="description">
-      <%= bookmark.description %>
-    </div>
-    <div class="tags">
-      <% bookmark.tags.each do |tag| %>
-      <a href="#search=tag:<%= tag %>"><span class="label label-default"><%= tag %></span></a>
-      <% end %>
-    </div>
-  </div>
-</div>
-<% end %>
-
-<script type="text/javascript">
-  $(function() {
-    $('a.collapse-trigger').click(function() { $(this).parents('.panel-bookmark').toggleClass('panel-bookmark-collapsed'); $(this).find('i').toggleClass('glyphicon-chevron-down').toggleClass('glyphicon-chevron-up') });
-  });
-</script>
+<%= react_component('BookmarkList', bookmarks: fixtures) %>
