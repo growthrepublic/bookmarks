@@ -2,3 +2,68 @@
 @import 'bootstrap-styles'
 @import 'bootstrap-sprockets'
 @import 'bootstrap'
+
+.panel-bookmark
+  @include clearfix
+  display: block
+  color: #333
+  min-height: 257px
+  padding-bottom: 40px
+  position: relative
+
+  &.panel-bookmark-collapsed
+    min-height: 0
+    padding-bottom: 0
+    .thumbnail
+      display: none
+    .content
+      margin: 20px
+      h1
+        border: 0
+        padding: 0
+
+      .description
+        display: none
+      .tags
+        position: absolute
+        top: 20px
+        right: 60px
+
+  .collapse-trigger
+    position: absolute
+    right: 15px
+    bottom: 15px
+    width: 30px
+    height: 30px
+    text-align: center
+    line-height: 30px
+    background: rgba(255,255,255, 0.8)
+    border-radius: 15px
+
+    i
+      margin-top: 3px
+      color: black
+
+  a:hover
+    text-decoration: none
+
+  .thumbnail
+    margin: 10px 10px -50px 10px
+
+  .content
+    margin-left: 20px
+    margin-right: 340px
+
+    h1
+      font-size: 22px
+      padding-bottom: 6px
+      border-bottom: 1px solid #ccc
+      i
+        color: #aaa
+        font-size: 14px
+
+    .tags
+      height: 20px
+      line-height: 20px
+      position: absolute
+      bottom: 20px
