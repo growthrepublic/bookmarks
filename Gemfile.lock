@@ -80,11 +80,8 @@ GEM
       sass (>= 3.3.0, < 3.5)
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
-<<<<<<< HEAD
-=======
     compass-rails (2.0.1)
       compass (~> 1.0.0)
->>>>>>> add react.js
     connection_pool (2.2.0)
     debug_inspector (0.0.2)
     disposable (0.0.9)
@@ -232,11 +229,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.0)
   ransack
-<<<<<<< HEAD
-  react-rails
-=======
   react-rails (~> 1.0)
->>>>>>> add react.js
   sass-rails (~> 5.0)
   spring
   trailblazer
