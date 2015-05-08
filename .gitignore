@@ -13,3 +13,4 @@
 /tmp
 /.idea
 /.vagrant
+/config/secrets.yml

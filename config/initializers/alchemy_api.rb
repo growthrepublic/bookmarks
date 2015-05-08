@@ -1,0 +1,1 @@
+AlchemyAPI.key = Rails.application.secrets.alchemy_api_key
