@@ -7,9 +7,47 @@ NewBookmarkForm = React.createClass
       title: ''
       tags: []
       description: ''
+      advanced_options: false
     }
 
   render: ->
+    `<div className="panel panel-default">
+      <div className="panel-body">
+        <form action="">
+          <div className="form-group">
+            <div className="input-group">
+              <input name="url" type="text" className="form-control" placeholder="URL..." value={this.state.url} onChange={this.urlChanged}/>
+              <span className="input-group-btn">
+                <button className="btn btn-primary" type="submit">Add</button>
+              </span>
+            </div>
+          </div>
+          <div className="form-group">
+            <button className="btn btn-default btn-xs" onClick={this.toggleAdvancedOptions}>Advanced settings</button>
+          </div>
+          { this.state.advanced_options ? this.advancedOptions() : '' }
+        </form>
+      </div>
+    </div>`
 
-  urlChanged: ->
-    alert('Changed!')
+  advancedOptions: ->
+    `<div className="advanced-options">
+      <div className="form-group">
+        <input name="title" className="form-control" type="text" placeholder="Title"/>
+      </div>
+      <div className="form-group">
+        <input name="tags" className="form-control" type="text" placeholder="Tags, comma separated"/>
+      </div>
+      <div className="form-group">
+        <textarea name="description" className="form-control textarea-lg" type="text" placeholder="Description"></textarea>
+      </div>
+    </div>`
+
+  urlChanged: (event) ->
+    @setState(url: event.target.value)
+
+  toggleAdvancedOptions: (event) ->
+    event.preventDefault()
+    @setState(advanced_options: !@state.advanced_options)
+
+window.NewBookmarkForm = NewBookmarkForm
