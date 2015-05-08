@@ -1,4 +1,4 @@
-NewBookmarkForm = React.createClass
+BookmarkForm = React.createClass
   getInitialState: ->
     {
       url: ''
@@ -48,4 +48,4 @@ NewBookmarkForm = React.createClass
     event.preventDefault()
     @setState(advanced_options: !@state.advanced_options)
 
-window.NewBookmarkForm = NewBookmarkForm
+window.BookmarkForm = BookmarkForm

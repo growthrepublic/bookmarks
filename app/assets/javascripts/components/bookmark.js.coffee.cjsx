@@ -21,10 +21,13 @@ Bookmark = React.createClass
         <div className="description">
           { @props.model.description }
         </div>
-        <div className="tags">
-          { @renderTag(tag) for tag in @props.model.tags }
-        </div>
+        { @renderTags() if @props.model.tags }
       </div>
+    </div>
+
+  renderTags: ->
+    <div className="tags">
+      { @renderTag(tag) for tag in @props.model.tags }
     </div>
 
   renderTag: (tag) ->
