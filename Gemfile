@@ -16,6 +16,8 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'quiet_assets'
+  gem 'minitest-spec-rails'
 end
 
 gem 'trailblazer'
