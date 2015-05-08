@@ -38,6 +38,7 @@ class Bookmark < ActiveRecord::Base
   end
 
   def create_thumbnail!
+    old_filename = read_attribute(:thumbnail)
     filename = SecureRandom.hex(24) + '.jpg'
 
     Screencap::Fetcher.new(url).fetch(
@@ -45,11 +46,9 @@ class Bookmark < ActiveRecord::Base
       width: 1024,
       height: 768
     )
-
-    update_attribute!(thumbnail, filename)
-  end
-
-  def thumbnail
-    Rails.root.join('public', 'screenshots', read_attribute(:thumbnail)) if read_attribute(:thumbnail)
+    update_attributes!(thumbnail: filename)
+    if old_filename.present? && File.exists?(Rails.root.join('public', 'screenshots', old_filename))
+      FileUtils.rm Rails.root.join('public', 'screenshots', old_filename)
+    end
   end
 end

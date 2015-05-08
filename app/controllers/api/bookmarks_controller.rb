@@ -5,6 +5,10 @@ class Api::BookmarksController < ApplicationController
     render json: Bookmark.all
   end
 
+  def show
+    render json: Bookmark.find(params[:id])
+  end
+
   def metadata
     render json: PageScrapper.new(params[:url])
   end
