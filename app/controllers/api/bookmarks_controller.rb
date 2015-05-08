@@ -1,33 +1,34 @@
 class Api::BookmarksController < ApplicationController
-  respond_to :html, :json
+  respond_to :json
 
-  def new
-    form Bookmark::Create
+  def index
+    render json: Bookmark.all
+  end
+
+  def metadata
+    render json: PageScrapper.new(params[:url])
   end
 
   def create
-    run Bookmark::Create do |op|
-      return redirect_to [:api, op.model]
-    end
+    bookmark = Bookmark.create!(params.slice(:url, :title, :description))
+    render json: bookmark
 
-    render action: :new
-  end
-
-  def show
-    present Bookmark::Update
-  end
-
-  def edit
-    form Bookmark::Update
-
-    render action: :new
+  rescue ActiveRecord::RecordInvalid
+    render json: bookmark.errors
   end
 
   def update
-    run Bookmark::Update do |op|
-      return redirect_to [:api, op.model]
-    end
+    bookmark = Bookmark.find(params[:id])
+    bookmark.update!(params.slice(:url, :title, :description))
+    render json: bookmark
 
-    render action: :new
+  rescue ActiveRecord::RecordInvalid
+    render json: bookmark.errors
+  end
+
+  def destroy
+    bookmark = Bookmark.find(params[:id])
+    bookmark.destroy!
+    render json: bookmark
   end
 end

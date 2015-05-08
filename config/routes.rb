@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get 'list', to: 'home#list'
 
   namespace :api do
-    resources :bookmarks
+    resources :bookmarks do
+      collection do
+        post 'metadata'
+      end
+    end
   end
 end

@@ -15,6 +15,12 @@ class Bookmark < ActiveRecord::Base
   before_create :fetch_metadata
   after_create :create_thumbnail_in_background
 
+  validate :url_format
+
+  def url_format
+    !!URI.parse(url) rescue false
+  end
+
   def fetch_metadata
     return if self.title.present? && self.description.present?
 
@@ -44,6 +50,6 @@ class Bookmark < ActiveRecord::Base
   end
 
   def thumbnail
-    Rails.root.join('public', 'screenshots', read_attribute(:thumbnail))
+    Rails.root.join('public', 'screenshots', read_attribute(:thumbnail)) if read_attribute(:thumbnail)
   end
 end

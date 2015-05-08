@@ -20,20 +20,20 @@ class PageScrapper
   def tags
     # TODO: MORE COMPLEXITY!
     tags = []
-    tags += scrapper.meta['keywords'].to_s.split(',').map(&:strip)
+    tags += scrapper.meta['keywords'].to_s.split(',').map { |k| k.strip.parameterize }
     tags += AlchemyAPI.search(:keyword_extraction, url: @url).reduce([]) do |keywords, keyword|
-      keywords << keyword['text'] if keyword['relevance'].to_f < 0.7
+      keywords << keyword['text'].parameterize if keyword['relevance'].to_f < 0.7
       keywords
     end
     tags.uniq
   end
   memoize :tags
 
-  def as_json
+  def as_json(opts={})
     ATTRIBUTES.map { |attribute| send(attribute) }
   end
 
-  def to_json
+  def to_json(opts={})
     as_json.to_s
   end
 
