@@ -1,5 +1,5 @@
 class Api::BookmarksController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
 
   def new
     form Bookmark::Create
@@ -11,6 +11,10 @@ class Api::BookmarksController < ApplicationController
     end
 
     render action: :new
+  end
+
+  def show
+    present Bookmark::Update
   end
 
   def edit
