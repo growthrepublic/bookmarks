@@ -1,8 +1,11 @@
+<div id="bookmark-list"></div>
+<div id="bookmark-form"></div>
+
 <script type="text/javascript">
   $(document).ready(function(){
     $.get('/api/bookmarks', function(data){
-      React.render(React.createElement(BookmarkList, { bookmarks: data }), $('.container').get(0));
+      React.render(React.createElement(BookmarkList, { bookmarks: data }), document.getElementById('bookmark-list'));
     });
-    React.render(React.createElement(BookmarkForm), $('.container').get(0));
+    React.render(React.createElement(BookmarkForm), document.getElementById('bookmark-form'));
   });
 </script>
