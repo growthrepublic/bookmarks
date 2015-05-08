@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :bookmarks do
       collection do
-        post 'metadata'
+        get 'metadata'
       end
     end
   end
