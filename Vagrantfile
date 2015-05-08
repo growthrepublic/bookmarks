@@ -5,7 +5,7 @@
 # We decided against both Chef and Puppet because they were too slow.
 
 vmconfig = {
-  ip: '192.168.13.38',
+  ip: '192.168.13.37',
 
   apt: [],
   
