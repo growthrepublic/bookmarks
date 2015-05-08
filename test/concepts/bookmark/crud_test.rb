@@ -9,7 +9,7 @@ class BookmarkCrudTest < MiniTest::Spec
               title: 'Google Search Engine',
               description: ''
           }
-      ]
+      ].model
 
       bookmark.persisted?.must_equal true
       bookmark.url.must_equal 'http://www.google.pl'
