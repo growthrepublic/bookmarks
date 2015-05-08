@@ -23,8 +23,8 @@ group :development, :test do
   gem 'annotate'
 end
 
+gem 'roar'
 gem 'trailblazer'
-gem 'cells'
 gem 'acts-as-taggable-on'
 gem 'ransack'
 gem 'simple_form'

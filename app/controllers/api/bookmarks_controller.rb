@@ -14,7 +14,9 @@ class Api::BookmarksController < ApplicationController
   end
 
   def show
-    present Bookmark::Update
+    present Bookmark::Update do |op|
+      render json: op.to_json if params[:format] == 'json'
+    end
   end
 
   def edit
